@@ -1,0 +1,44 @@
+<ng-template [ngIf]="isShowModal">
+	<app-modal *ngIf="isShowModal" (onClose)="closeModal()"></app-modal>
+</ng-template>
+
+<div 
+	class="menu-container"
+	[ngClass]="{'active': isShowMenu}"
+>
+	<nav class="menu">
+		<div class="menu__title">Menu</div>
+		<ul class="menu__list">
+			<li class="menu__item" routerLinkActive="active">
+				<a routerLink="/info" class="menu__link">Main</a>
+			</li>
+			<li class="menu__item" routerLinkActive="active">
+				<a routerLink="/service" class="menu__link">Services</a>
+			</li>
+			<li class="menu__item" routerLinkActive="active">
+				<a routerLink="/offer" class="menu__link">Offer</a>
+			</li>
+			<li class="menu__item" routerLinkActive="active">
+				<a routerLink="/coach" class="menu__link">Coaches</a>
+			</li>
+		</ul>										
+	</nav>
+
+	<button *ngIf="!authService.isAuth(); else login" (click)="isShowModal = true" class="menu-btn btn btn--small">Start</button>
+
+	<ng-template #login>
+		<button routerLink="/admin" class="menu-btn btn btn--small">Login</button>
+	</ng-template>
+
+</div>
+			
+<button 
+	class="burger" 
+	(click)="isShowMenu = !isShowMenu"
+	[ngClass]="{'active': isShowMenu}"
+>
+	<span class="burger__line burger__line--first"></span>
+	<span class="burger__line burger__line--second"></span>
+	<span class="burger__line burger__line--third"></span>
+</button>
+	

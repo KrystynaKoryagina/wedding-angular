@@ -1,0 +1,22 @@
+<ng-container *ngIf="sectionData$ | async as data; else loading">
+	<section class="services default-section">
+		<div class="container">
+			<div class="title">
+				<h2 class="title__name">{{ data.meta.title }}</h2>
+				<div class="title__subtext">{{ data.meta.description }}</div>
+			</div>
+			<ul class="services__list">
+				<li 
+					class="services__item"
+					*ngFor="let item of data.content"
+				>
+					<app-service [service]="item"></app-service>
+				</li>
+			</ul>
+		</div>
+	</section>
+</ng-container>
+
+<ng-template #loading>
+	<app-preloader></app-preloader>
+</ng-template>

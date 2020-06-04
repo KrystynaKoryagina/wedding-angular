@@ -1,0 +1,53 @@
+<div class="overlay"></div>
+
+<div class="modal">
+	<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+
+		<div class="form__alert" *ngIf="authService.error$ | async as error">
+			{{ error }}
+		</div>
+
+		<div 
+			class="form__group"
+			[ngClass]="{ 'invalid': form.get('email').touched && form.get('email').invalid }"
+		>
+			<label for="email">Email:</label>
+			<input class="form__control" id="email" type="email" [placeholder]="emailPlaceholder" formControlName="email">
+
+			<div *ngIf="form.get('email').touched && form.get('email').invalid">
+				<small *ngIf="form.get('email').errors.required">
+					Email field is required
+				</small>
+				<small *ngIf="form.get('email').errors.email">
+					You enter wrong email. Email must include '@' !!!!
+				</small>
+			</div>
+			
+		</div>
+
+		<div 
+			class="form__group"
+			[ngClass]="{ 'invalid': form.get('password').touched && form.get('password').invalid }"
+		>
+			<label for="password">Password:</label>
+			<input class="form__control" id="password" type="password" [placeholder]="passwordPlaceholder" formControlName="password">
+
+			<div *ngIf="form.get('password').touched && form.get('password').invalid"
+			>
+				<small *ngIf="form.get('password').errors.required">
+					Password field is required
+				</small>
+				<small *ngIf="form.get('password').errors.minlength">
+					Password must be at least {{ form.get('password').errors.minlength.requiredLength }} characters.
+					Now it include {{ form.get('password').errors.minlength.actualLength }} characters.
+				</small>
+    	</div>
+		</div>
+
+		<div class="btn-group">
+			<button type="submit" class="btn btn--small" [disabled]="form.invalid || isSubmitted">OK</button>
+			<button type="submit" class="btn btn--small" (click)="closeModal()">Cancel</button>
+		</div>
+	</form>	
+</div>
+

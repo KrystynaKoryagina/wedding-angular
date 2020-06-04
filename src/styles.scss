@@ -1,0 +1,196 @@
+/* You can add global styles to this file, and also import other style files */
+@import "reset";
+@import "variables";
+@import "mixins";
+
+/* ==== Icon Fonts ==== */
+@font-face {
+	font-family: "icons";
+	src: url('./assets/fonts/iconfonts/icons.eot');
+	src: url('./assets/fonts/iconfonts/icons.eot?#iefix') format('eot'),
+		url('./assets/fonts/iconfonts/icons.woff2') format('woff2'),
+		url('./assets/fonts/iconfonts/icons.woff') format('woff'),
+		url('./assets/fonts/iconfonts/icons.ttf') format('truetype'),
+		url('./assets/fonts/iconfonts/icons.svg#icons') format('svg');
+}
+.icon:before {
+	font-family: "icons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	text-decoration: none;
+	text-transform: none;
+}
+.icon-arrow-next:before { content: "\E001"; }
+.icon-arrow-prev:before { content: "\E002"; }
+.icon-caret-up:before { content: "\E003"; }
+.icon-ico1:before { content: "\E004"; }
+.icon-ico2:before { content: "\E005"; }
+.icon-ico3:before { content: "\E006"; }
+.icon-ico4:before { content: "\E007"; }
+.icon-ico5:before { content: "\E008"; }
+.icon-ico6:before { content: "\E009"; }
+.icon-ico7:before { content: "\E00A"; }
+.icon-ico8:before { content: "\E00B"; }
+.icon-right:before { content: "\E00C"; }
+
+/* ==== Custom Styles ==== */
+*, 
+*::before, 
+*::after {
+	box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+	font-family: $basicFontFamily;
+	font-size: $basicFontSize;
+	font-weight: $basicFontWeight;
+	font-style: $basicFontStyle;
+	font-display: swap;
+	color: $basicColor;
+	line-height: $basicLineHeight;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
+	text-rendering: optimizeSpeed;
+
+	background-color: $basicBg;
+}
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100%;
+	overflow: hidden;
+}
+a {
+	display: inline-block;
+	font-family: inherit;
+	color: inherit;
+	text-decoration: none;
+
+	&:hover, &:active {
+		text-decoration: none;
+		cursor: pointer;
+	}
+}
+img {
+	display: block;
+	max-width: 100%;
+}
+button, button:focus {
+	cursor: pointer;
+  outline: none;
+}
+.container {
+	max-width: 1326px;
+	width: 100%;
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.default-section {
+	padding-bottom: 100px;
+
+	@include media(tablets) {
+		padding-bottom: 56px;
+	}
+}
+.no-scroll {
+	position: fixed;
+	width: 100%;
+	overflow: hidden;
+}
+
+/* Buttons */
+.btn-group {
+	display: flex;
+	justify-content: space-between;
+
+	.btn {
+		flex: 1;
+
+		& + .btn {
+			margin-left: 15px;
+		}
+	}
+
+}
+.btn {
+	font-family: $basicFontFamily;
+	font-size: $basicFontSize;
+	font-weight: 600;
+	line-height: 1;
+	border: 2px solid transparent;
+	border-radius: 3px;
+	background-color: transparent;
+	transition: background-color .3s, color .3s;
+	cursor: pointer;
+
+	&--small {
+		padding: 8px 36px;
+		color: $smallBtnBg;
+		border-color: $smallBtnBg;
+
+		&:hover {
+			background-color: $smallBtnBg;
+			color: #fff;
+		}
+	}
+
+	&--big {
+		padding: 13px 38px;
+		color: $bigBtnBg;
+		border-color: $bigBtnBg;
+
+		&:hover {
+			background-color: $bigBtnBg;
+			color: #fff;
+		}
+	}
+
+	&--white {
+		border-color: #fff;
+		color: #fff;
+
+		&:hover {
+			background-color: #fff;
+			color: #000;
+		}
+	}
+
+	&:disabled {
+    cursor: not-allowed;
+    background: #f4f4f4;
+    color: #111;
+  }
+}
+
+/* Title */
+.title {
+	max-width: 668px;
+
+	&__name {
+		font-weight: bold;
+		font-size: 36px;
+
+		@include media(phones) {
+			font-size: 24px;
+		}
+	}
+
+	&__subtext {
+		margin-top: 24px;
+
+		@include media(phones) {
+			margin-top: 12px;
+			font-size: 13px;
+		}
+	}
+}

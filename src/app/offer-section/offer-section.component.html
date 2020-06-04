@@ -1,0 +1,24 @@
+<ng-container *ngIf="sectionData$ | async as data; else loading">
+	<section class="offer default-section">
+		<div class="container">
+			<div class="title">
+				<h2 class="title__name">{{ data.meta.title }}</h2>
+				<p class="title__subtext">{{ data.meta.description }}</p>
+			</div>
+			<ul class="offer__list">
+				<li 
+					class="offer__item" 
+					*ngFor="let offer of data.content; let i = index">
+					<a class="offer__link">
+						<i class="offer__icon icon" [ngClass]="'icon-ico'+(i+1)"></i>
+						<div class="offer__text">{{ offer.title }}</div>					
+					</a>
+				</li>
+			</ul>	
+		</div>
+	</section>
+</ng-container>
+
+<ng-template #loading>
+	<app-preloader></app-preloader>
+</ng-template>

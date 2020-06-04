@@ -1,0 +1,22 @@
+<ng-container *ngIf="sectionData$ | async as data; else loading">
+	<section class="coaches default-section">
+		<div class="container">
+			<div class="title">
+				<h2 class="title__name">{{ data.meta.title }}s</h2>
+				<div class="title__subtext">{{ data.meta.description }}</div>
+			</div>
+			<ul class="coaches__list">
+				<li 
+					class="coaches__item"
+					*ngFor="let item of data.content; let i = index"
+				>
+					<app-coach [coach]="item" [index]="i"></app-coach>
+				</li>
+			</ul>	
+		</div>
+	</section>
+</ng-container>
+
+<ng-template #loading>
+	<app-preloader></app-preloader>
+</ng-template>

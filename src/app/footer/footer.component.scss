@@ -1,0 +1,22 @@
+@import "variables";
+@import "mixins";
+
+.footer {
+	padding: 35px 0;
+	line-height: 1;
+	background-color: $black;
+	color: #fff;
+
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__copyright {
+
+		@include media(phones) {
+			font-size: 14px;
+		}
+	}
+}

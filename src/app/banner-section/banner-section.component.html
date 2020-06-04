@@ -1,0 +1,23 @@
+<ng-container *ngIf="sectionData$ | async as data; else loading">
+	<section class="banner default-section">
+		<div class="container">
+			<div class="banner__inner">
+				<div class="banner__left">
+					<div class="banner__content">
+						<h1 class="banner__title">{{ data.meta.title }}</h1>
+						<div class="banner__subtitle">{{ data.meta.location }}</div>
+						<p class="banner__text">{{ data.meta.description }}</p>
+						<button class="banner__btn btn btn--big">{{ data.action.title }}</button>
+					</div>
+				</div>
+				<div class="banner__right">
+					<img class="banner__img" [src]="'./assets/images' + data.meta.heroImage" alt="Wedding dance photo" loading="lazy">
+				</div> 	
+			</div>
+		</div>
+	</section>
+</ng-container>
+
+<ng-template #loading>
+	<app-preloader></app-preloader>
+</ng-template>

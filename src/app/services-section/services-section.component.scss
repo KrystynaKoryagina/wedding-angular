@@ -1,0 +1,36 @@
+@import "variables";
+@import "mixins";
+
+.services {
+	$margin: 7px;
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 30px;
+		margin-left: -$margin;
+		margin-right: -$margin;  
+
+		@include media(tablets) {
+			margin-left: -$containerPadding;
+			margin-right: -$containerPadding;
+		}
+	}
+
+	&__item {
+		width: calc(100% / 3 - #{$margin} - #{$margin});
+		margin-left: $margin;
+		margin-right: $margin;  
+		margin-bottom: 15px;
+
+		@include media(tablets) {
+			width: calc(100% / 2 - #{$margin} - #{$margin});
+		}
+
+		@include media(phones) {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+		}
+	}
+}

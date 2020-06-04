@@ -1,0 +1,25 @@
+<div class="coach">
+	<div class="coach__photo">
+		<img class="coach__img" src="./assets/images/coach-1.jpg" alt="Coach Photo" loading="lazy">
+	</div>
+	<div class="coach__info">
+		<div class="coach__num">{{ index + 1 | number: '2.0'}}</div>
+		<div class="coach__name">{{ coach.name }}</div>
+		<div class="coach__prof">{{ coach.direction }}</div>
+		<ul class="coach__data">
+			<li class="coach__data-item">
+				<span class="coach__data-title">Work experience</span>{{ coach.workExperience }} years
+			</li>
+			<li class="coach__data-item">
+				<span class="coach__data-title">Teacher for</span>{{ coach.teachExperience }} years
+			</li>
+			<li class="coach__data-item">
+				<span class="coach__data-title">Style</span>{{ coach.style }}
+			</li>
+		</ul>
+		<a href="#" class="coach__btn btn btn--big">Let’s start</a>
+		<a href="#" class="coach__btn--mobile">
+			<i class="icon icon-right"></i>
+		</a>
+	</div>
+</div>
