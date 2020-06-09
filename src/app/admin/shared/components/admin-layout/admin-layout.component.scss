@@ -10,8 +10,32 @@
 		align-items: center;
 	}
 
+	&__list {
+		margin-left: auto;
+		margin-right: 30px;
+	}
+	
+	&__item {
+		
+		&.active {
+			font-weight: bold;
+		}
+	}
+
 	&__link {
 		font-size: 18px;
-		font-weight: bold;
+
+		&::after {
+			content: "";
+			display: block;
+			width: 0;
+			height: 1px;
+			background: #fff;
+			transition: width .5s;
+		}
+		
+		&:hover::after {
+			width: 100%;
+		}
 	}
 }

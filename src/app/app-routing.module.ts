@@ -8,11 +8,11 @@ import { CoachesSectionComponent } from './coaches-section/coaches-section.compo
 
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
-    { path: '', redirectTo: '/info', pathMatch: 'full' },
-    { path: 'info', component: BannerSectionComponent },
-    { path: 'service', component: ServicesSectionComponent },
+    { path: '', redirectTo: '/banner', pathMatch: 'full' },
+    { path: 'banner', component: BannerSectionComponent },
+    { path: 'services', component: ServicesSectionComponent },
     { path: 'offer', component: OfferSectionComponent },
-    { path: 'coach', component: CoachesSectionComponent }
+    { path: 'coaches', component: CoachesSectionComponent }
   ]},
   { path: 'admin', loadChildren: () => import ('./admin/admin.module').then(mod => mod.AdminModule ), },
 ];

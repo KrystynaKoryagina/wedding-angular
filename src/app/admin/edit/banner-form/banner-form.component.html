@@ -1,0 +1,62 @@
+<form class="form form-edit" [formGroup]="form" (ngSubmit)="submit()">
+	
+	<fieldset *ngIf="section.meta">
+		<legend>Meta</legend>
+		<div formGroupName="meta" class="form__group-container">
+
+			<div 
+				class="form__group"
+				[ngClass]="{ 'invalid': form.get('meta').get('title').touched && form.get('meta').get('title').invalid }"
+			>
+				<label class="form__group-name" for="metaTitle">Title:</label>
+				<input class="form__control" id="metaTitle" type="text" formControlName="title">
+			</div>
+			<div 
+				class="form__group"
+				[ngClass]="{ 'invalid': form.get('meta').get('location').touched && form.get('meta').get('location').invalid }"
+			>
+				<label class="form__group-name" for="metaLocation">Location:</label>
+				<input class="form__control" id="metaLocation" type="text" formControlName="location">
+			</div>
+			<div 
+				class="form__group"
+				[ngClass]="{ 'invalid': form.get('meta').get('heroImage').touched && form.get('meta').get('heroImage').invalid }"
+			>
+				<label class="form__group-name" for="metaImg">Image:</label>
+				<input class="form__control" id="metaImg" type="text" formControlName="heroImage">
+			</div>
+			<div 
+				class="form__group"
+				[ngClass]="{ 'invalid': form.get('meta').get('description').touched && form.get('meta').get('description').invalid }"
+			>
+				<label class="form__group-name" for="metaDesc">Description:</label>
+				<textarea class="form__control" formControlName="description"></textarea>
+			</div>
+
+		</div> 
+	</fieldset>
+
+	<fieldset *ngIf="(section.action | json) != '{}'">
+		<legend>Action</legend>
+
+		<div formGroupName="action">
+			<div 
+				class="form__group"
+				[ngClass]="{ 'invalid': form.get('action').get('title').touched && form.get('action').get('title').invalid }"
+			>
+				<label for="actionTitle">Title:</label>
+				<input class="form__control" id="actionTitle" type="text" formControlName="title">
+			</div>
+			<div 
+				class="form__group"
+				[ngClass]="{ 'invalid': form.get('action').get('url').touched && form.get('action').get('url').invalid }"
+			>
+				<label for="actionUrl">Url:</label>
+				<input class="form__control" id="actionUrl" type="text" formControlName="url">
+			</div>
+		</div>
+
+	</fieldset>
+
+	<button class="btn btn--small" type="submit" [disabled]="form.invalid">Save</button>
+</form>		

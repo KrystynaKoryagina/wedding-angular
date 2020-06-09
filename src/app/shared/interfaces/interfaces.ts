@@ -6,8 +6,7 @@ export interface SectionMeta {
 }
 
 export interface SectionContent {
-	style: string[];
-	_id: string;
+	style?: string[];
 	title?: string;
 	url: string;
 	name?: string;
@@ -23,17 +22,14 @@ export interface SectionAction {
 
 export interface Section {
 	meta: SectionMeta;
-	_id: string;
 	type: string;
 	content: SectionContent[];
-	action: SectionAction;
+	action?: SectionAction;
 }
-
 export interface User {
 	email: string;
 	password: string;
 }
-
 export interface AuthResponse {
 	access_token: string;
 }

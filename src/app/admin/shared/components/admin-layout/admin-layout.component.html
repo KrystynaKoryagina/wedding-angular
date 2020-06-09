@@ -4,11 +4,15 @@
 			<div class="navbar__title">
 				<a routerLink="/" class="navbar__link">Wedding Admin</a>
 			</div>
-			<ul>
-				<li>
-					<a href="#" class="btn btn--small btn--white" (click)="logout($event)">Logout</a>
+			<ul class="navbar__list">
+				<li routerLinkActive="active" class="navbar__item">
+					<a [routerLink]="['/admin', 'dashboard']" class="navbar__link">Dashboard</a>
 				</li>
-			</ul>			
+			</ul>
+			<div class="btn-group">
+				<button routerLink="/" class="btn btn--small btn--white">Back</button>
+				<button class="btn btn--small btn--white" (click)="logout($event)">Logout</button>
+			</div>
 		</div>
 	</div>
 </nav>

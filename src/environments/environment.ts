@@ -5,7 +5,13 @@ import { Environment } from './interface';
 
 export const environment: Environment = {
   production: false,
-  baseUrl: 'https://us-central1-cms-edu-2020-api.cloudfunctions.net'
+  baseUrl: 'https://us-central1-cms-edu-2020-api.cloudfunctions.net',
+  sectionPath: {
+    banner: 'info',
+    services: 'service',
+    offer: 'offer',
+    coaches: 'coach'
+  }
 };
 
 /*

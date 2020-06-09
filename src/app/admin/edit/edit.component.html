@@ -1,0 +1,22 @@
+<div class="form-container" *ngIf="section; else loading">
+
+	<div 
+		class="alert" 
+		[ngClass]="{
+			'alert--success': isSuccess,
+			'alert--danger': isError
+		}"
+		*ngIf="alertText"
+	>
+		{{alertText}}
+	</div>
+
+	<ng-container [ngSwitch]="section.type">
+		<app-banner-form *ngSwitchCase="sectionType.banner" [section]="section" (onSubmit)="submit($event)"></app-banner-form>
+	</ng-container>
+
+</div>
+
+<ng-template #loading>
+	<app-preloader></app-preloader>
+</ng-template>

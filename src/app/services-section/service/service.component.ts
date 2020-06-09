@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SectionContent } from '../../interfaces/interfaces';
+import { SectionContent } from '../../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-service',

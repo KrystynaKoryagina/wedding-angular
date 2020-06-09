@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../shared/services/data.service';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Section } from '../shared/interfaces/interfaces';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-coaches-section',
   templateUrl: './coaches-section.component.html',
@@ -13,12 +12,9 @@ export class CoachesSectionComponent implements OnInit {
 
   sectionData$: Observable<Section>;
 
-  constructor(
-    private dataService: DataService,
-    private router: Router
-  ) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.sectionData$ = this.dataService.getSectionByType(this.router.url.slice(1));
+    this.sectionData$ = this.dataService.getSectionByType(environment.sectionPath.coaches);
   }
 }

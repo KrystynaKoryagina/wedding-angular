@@ -1,0 +1,30 @@
+.dashboard {
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto;
+
+	&__link {
+
+		& + .dashboard__link {
+			margin-left: 10px;
+		}
+	}
+
+	&__table {
+		width: 100%;
+		border: 1px solid #333;
+
+		th, td {
+			padding: 15px;
+			text-align: left;
+		}
+
+		th {
+			background: #a09e9e;
+		}
+
+		tbody tr:nth-child(even) {
+			background-color: #f4f4f4;
+		}
+	}
+}

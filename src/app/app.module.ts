@@ -13,11 +13,10 @@ import { OfferSectionComponent } from './offer-section/offer-section.component';
 import { CoachesSectionComponent } from './coaches-section/coaches-section.component';
 import { ServicesSectionComponent } from './services-section/services-section.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PreloaderComponent } from './shared/components/preloader/preloader.component';
-import { ServiceComponent } from './shared/components/service/service.component';
-import { CoachComponent } from './shared/components/coach/coach.component';
-import { ModalComponent } from './shared/modal/modal.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ServiceComponent } from './services-section/service/service.component';
+import { CoachComponent } from './coaches-section/coach/coach.component';
+import { ModalComponent } from './shared/components/modal/modal.component';
+import { SharedModule } from './shared/modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OfferSectionComponent,
     CoachesSectionComponent,
     ServicesSectionComponent,
-    PreloaderComponent,
     ServiceComponent,
     CoachComponent,
     ModalComponent
@@ -40,8 +38,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

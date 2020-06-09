@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<div 
+	class="dashboard"
+	*ngIf="sections.length; else loading"
+>
+	<table class="dashboard__table">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>Section</th>
+			<th>Section Title</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr *ngFor="let section of sections; let i = index">
+			<td>{{ i + 1 }}</td>
+			<td>{{ section.type }}</td>
+			<td>{{ section.meta.title }}</td>
+			<td>
+				<a 
+					class="dashboard__link"
+					[routerLink]="['/admin', 'edit', section.type]"
+				>
+					Edit
+				</a>		
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+<ng-template #loading>
+	<app-preloader></app-preloader>
+</ng-template>
+
+
+

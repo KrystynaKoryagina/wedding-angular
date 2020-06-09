@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Section } from '../shared/interfaces/interfaces';
 import { DataService } from '../shared/services/data.service';
-import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-services-section',
@@ -13,12 +13,9 @@ export class ServicesSectionComponent implements OnInit {
 
   sectionData$: Observable<Section>;
 
-  constructor(
-    private dataService: DataService,
-    private router: Router
-  ) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.sectionData$ = this.dataService.getSectionByType(this.router.url.slice(1));
+    this.sectionData$ = this.dataService.getSectionByType(environment.sectionPath.services);
   }
 }
