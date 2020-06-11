@@ -5,15 +5,12 @@ import { AdminLayoutComponent } from './shared/components/admin-layout/admin-lay
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditComponent } from './edit/edit.component';
 import { SharedModule } from '../shared/modules/shared.module';
-import { BannerFormComponent } from './edit/banner-form/banner-form.component';
-
 
 @NgModule({
 	declarations: [
 		AdminLayoutComponent,
 		DashboardComponent,
-		EditComponent,
-		BannerFormComponent
+		EditComponent
 	],
 	imports: [
 		CommonModule,

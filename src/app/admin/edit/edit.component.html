@@ -11,9 +11,96 @@
 		{{alertText}}
 	</div>
 
-	<ng-container [ngSwitch]="section.type">
-		<app-banner-form *ngSwitchCase="sectionType.banner" [section]="section" (onSubmit)="submit($event)"></app-banner-form>
-	</ng-container>
+	<form class="form form-edit" [formGroup]="form" (ngSubmit)="submit()">
+
+		<fieldset *ngIf="section.meta">
+			<legend>Meta</legend>
+			<div formGroupName="meta" class="form__group-container">
+
+				<div class="form__group" *ngIf="section.meta.title">
+					<label class="form__group-name" for="metaTitle">Title:</label>
+					<input class="form__control" id="metaTitle" type="text" formControlName="title">
+				</div>					
+				<div class="form__group" *ngIf="section.meta.location">
+					<label class="form__group-name" for="metaLocation">Location:</label>
+					<input class="form__control" id="metaLocation" type="text" formControlName="location">
+				</div>
+				<div class="form__group" *ngIf="section.meta.heroImage">
+					<label class="form__group-name" for="metaImg">Image:</label>
+					<input class="form__control" id="metaImg" type="text" formControlName="heroImage">
+				</div>
+				<div class="form__group" *ngIf="section.meta.description">
+					<label class="form__group-name" for="metaDesc">Description:</label>
+					<textarea class="form__control" formControlName="description"></textarea>
+				</div>
+
+			</div> 
+		</fieldset>
+
+		<fieldset *ngIf="(section.action | json) != '{}'">
+			<legend>Action</legend>
+
+			<div formGroupName="action">
+				<div class="form__group" *ngIf="section.action.title">
+					<label for="actionTitle">Title:</label>
+					<input class="form__control" id="actionTitle" type="text" formControlName="title">
+				</div>
+				<div class="form__group" *ngIf="section.action.url">
+					<label for="actionUrl">Url:</label>
+					<input class="form__control" id="actionUrl" type="text" formControlName="url">
+				</div>
+			</div>
+
+		</fieldset>
+
+		<fieldset *ngIf="section.content.length">
+			<legend>Content</legend>
+
+			<div formGroupName="content">
+				<ng-container *ngFor="let control of contentGroups.controls; let i = index">
+
+					<div [formGroupName]="i"  class="form__group-container">							
+					<div class="form__group-num">{{i + 1}}</div>
+					
+					<div class="form__group" *ngIf="section.content[i].title">
+							<label for="contentTitle">Title:</label>
+							<input class="form__control" id="contentTitle" type="text" formControlName="title">
+						</div>
+					<div class="form__group" *ngIf="section.content[i].url">
+							<label for="contentUrl">Url:</label>
+							<input class="form__control" id="contentUrl" type="text" formControlName="url">
+						</div>
+						<div class="form__group" *ngIf="section.content[i].name">
+							<label for="contentUrl">Name:</label>
+							<input class="form__control" id="contentName" type="text" formControlName="name">
+						</div>
+						<div class="form__group" *ngIf="section.content[i].direction">
+							<label for="contentDirection">Direction:</label>
+							<input class="form__control" id="contentDirection" type="text" formControlName="direction">
+						</div>
+						<div class="form__group" *ngIf="section.content[i].workExperience">
+							<label for="contentWork">Work Experience:</label>
+							<input class="form__control" id="contentWork" type="text" formControlName="workExperience">
+						</div>
+						<div class="form__group" *ngIf="section.content[i].teachExperience">
+							<label for="contentTeach">Teach Experience:</label>
+							<input class="form__control" id="contentTeach" type="text" formControlName="teachExperience">
+						</div>
+						<div class="form__group" *ngIf="section.content[i].style.length">
+							<label for="contentStyle">Style:</label>
+							<input class="form__control" id="contentStyle" type="text" formControlName="style">
+						</div>
+
+					</div>
+				</ng-container> 
+
+				<button type="button" class="btn btn--small btn--black">Add new</button>
+				
+			</div>
+		</fieldset>
+
+		<button class="btn btn--small" type="submit">Save</button>
+	</form>	
 
 </div>
 
